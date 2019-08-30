@@ -1,0 +1,110 @@
+<!-- 
+<div class="container">
+    <div class="row">
+
+        <form class="col-6" #form="ngForm" (ngSubmit)="submitForm(form.value)">
+            <div class="form-group">
+                <label>value1</label>
+                <input type="text" name="value1" class="form-control" [(ngModel)]="selectedvalue1">
+            </div>
+            <div class="form-group">
+                <label>value2</label>
+                <input type="text" name="value2" class="form-control" [(ngModel)]="selectedvalue2">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Submit</button>&nbsp;&nbsp;
+                <button class="btn btn-default" (click)="onDelete()">Delete</button>&nbsp;&nbsp;
+                <button class="btn btn-default" (click)="onUpdate()">Update</button>
+            </div>
+        </form>
+
+        <kendo-grid [data]="gridData.result" [height]="410" [selectable]="selectableSettings"
+            (selectionChange)="selected($event)">
+            <kendo-grid-checkbox-column width="20"></kendo-grid-checkbox-column>
+            <kendo-grid-column field="ShipperID" title="ID" width="200">
+            </kendo-grid-column>
+            <kendo-grid-column field="Phone" title="Phone" width="100">
+            </kendo-grid-column>
+            <kendo-grid-column field="Extension" title="Extension" width="80">
+            </kendo-grid-column>
+            <kendo-grid-column field="Name" title="Name" width="80">
+            </kendo-grid-column>
+            <kendo-grid-column field="CompanyName" title="CompanyName" width="80">
+            </kendo-grid-column>
+            <kendo-grid-column field="Address" title="Address" width="80">
+            </kendo-grid-column>
+        </kendo-grid>
+
+    </div>
+(dataStateChange)="onStateChange($event)"
+</div>
+ -->
+
+
+
+<kendo-grid [kendoGridBinding] ="gridData"  [height]="533" 
+    [pageSize]="state.pageSize" [skip]="state.skip" [sort]="state.sort"
+    [filterable]="true" [filter]="state.filter" [pageable]="true" [sortable]="true"
+    (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
+    (save)="saveHandler($event)" (remove)="removeHandler($event)" (add)="addHandler($event)" [navigable]="true"
+    (pageChange)="pageChange($event)">
+    <ng-template kendoGridToolbarTemplate>
+        <!-- <button kendoGridAddCommand>Add new</button> -->
+        <button type="button" kendoGridExcelCommand icon="file-excel">Export to Excel</button>
+    </ng-template>
+    <!-- <kendo-grid-column field="shipperId" title="ShipperId" width="200">
+    </kendo-grid-column> -->
+    <kendo-grid-column field="shipperName" title="寄件人" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="consigneeName" title="收件人" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="shippingStation" title="起站" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="endStation" title="驛站" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="deliveryDate" title="配送日期" width="80" [filterable]="false">
+    </kendo-grid-column>
+    <kendo-grid-column field="deliveryWay" title="配送方式" width="100" filter="text">
+    </kendo-grid-column>
+    <!-- <kendo-grid-column field="orderStatus" title="配送狀態" width="50" filter="text" [filterable]="false">
+    </kendo-grid-column> -->
+    <!-- <kendo-grid-column field="deliveryPeriod" title="配送時段" width="100">
+    </kendo-grid-column> -->
+    <!-- <kendo-grid-column field="shippingCharge" title="本運費" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="pickUpCharge" title="接費" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="terminalCharge" title="送費" width="80">filter="numeric"
+    </kendo-grid-column> -->
+    <!-- <kendo-grid-column field="specialServiceCharge" title="特服費" width="80" filter="text">
+    </kendo-grid-column> -->
+    <kendo-grid-column field="productName" title="產品名稱" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="transitCharge" title="聯運費" width="80" filter="text">
+    </kendo-grid-column>
+    <!-- <kendo-grid-column field="otherCharge" title="其他費用" width="80">
+    </kendo-grid-column> -->
+    <!-- <kendo-grid-column field="transitChargeDescription" title="聯運費描述" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="specialServiceChargeDescription" title="特服描述" width="80">
+    </kendo-grid-column> -->
+    <kendo-grid-column field="totalFreight" title="總運費" width="80" filter="text">
+    </kendo-grid-column>
+    <!-- <kendo-grid-column field="quantity" title="數量" width="80">
+    </kendo-grid-column> -->
+    <!-- <kendo-grid-column field="version" title="狀態" width="120">
+    </kendo-grid-column> -->
+    <kendo-grid-column field="quantity" title="數量" width="100" filter="numeric">
+    </kendo-grid-column>
+    <kendo-grid-column field="trackingNumber" title="託運單號" width="100" filter="numeric">
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="120">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Edit</button>
+            <button kendoGridRemoveCommand>Remove</button>
+            <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+            <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+        </ng-template>
+    </kendo-grid-command-column>
+    <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
+</kendo-grid>

@@ -1,0 +1,27 @@
+<div class="dropdown">
+  <nav class="menu">
+    <ul class="menu-options-list">
+      <li *ngFor="let option of menuOptions" class="menu-option " (click)="openTab(option.url)">
+        {{option.name}}
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- 
+<div class="container">
+  <nav class="menu">
+    
+      <div ngbDropdown class="menu-options-list">
+        <p id="dropdownBasic1" ngbDropdownToggle>託運單登入</p>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <ul class="menu-options-list">
+          <li *ngFor="let option of menuOptions" class="menu-option" (click)="openTab(option.url)">
+            <a>{{option.name}}</a>
+          </li>
+          </ul>
+        </div>
+      </div>
+    
+  </nav>
+</div> -->

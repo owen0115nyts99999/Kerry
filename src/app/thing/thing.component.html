@@ -1,0 +1,76 @@
+<style>
+    #test {
+        justify-content: space-evenly;
+    }
+
+    #go {
+        position: relative;
+        top: 35px;
+        right: 65px;
+    }
+
+    #ga {
+        margin-top: 40px;
+    }
+</style>
+
+<kendo-grid [kendoGridBinding] ="gridData"  [height]="533" 
+    [pageSize]="state.pageSize" [skip]="state.skip" [sort]="state.sort"
+    [filterable]="true" [filter]="state.filter" [pageable]="true" [sortable]="true"
+    (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
+    (save)="saveHandler($event)" (remove)="removeHandler($event)" (add)="addHandler($event)" [navigable]="true"
+    (pageChange)="pageChange($event)">
+    <ng-template kendoGridToolbarTemplate>
+        <!-- <button kendoGridAddCommand>Add new</button> -->
+        <button type="button" kendoGridExcelCommand icon="file-excel">Export to Excel</button>
+    </ng-template>
+    <kendo-grid-column field="trackingNumber" title="託運單ID" width="120" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="squareFeet" title="才數" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="kilogram" title="重量" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-column field="valueDeclaredAmount" title="報值金額" width="80" filter="text">
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="110">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Edit</button>
+            <button kendoGridRemoveCommand>Remove</button>
+            <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+            <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+        </ng-template>
+    </kendo-grid-command-column>
+    <kendo-grid-excel fileName="Products.xlsx"></kendo-grid-excel>
+</kendo-grid>
+
+<form #form="ngForm" (ngSubmit)="submitForm(form)">
+    <div class="col">
+        <div style="background-color:rgb(48, 48, 235)">包裹資訊</div>
+        <div class="row" id="test">
+            <div class="form-group">
+                <label>才數</label>
+                <input type="text" name="squareFeet" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>重量</label>
+                <input type="text" name="kilogram" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>報值金額</label>
+                <input type="text" name="valueDeclaredAmount" class="form-control" ngModel>
+            </div>
+            <!-- <div class="form-group">
+                <label>公司名稱</label>
+                <input type="text" name="shipperCompanyName" class="form-control" ngModel>
+            </div> -->
+            <div class="form-group">
+                <label>託運單ID</label>
+                <input type="text" name="trackingNumber" class="form-control" ngModel>
+            </div>
+            <div class="form-group" id="ga">
+                <button type="submit" class="btn btn-default">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <button type="submit" class="btn btn-default">一單多建</button>&nbsp;&nbsp; -->
+            </div>
+        </div>
+    </div>
+</form>

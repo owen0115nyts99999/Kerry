@@ -1,0 +1,174 @@
+<style>
+    #test {
+        justify-content: space-evenly;
+    }
+
+    #go {
+        position: relative;
+        top: 35px;
+        right: 65px;
+    }
+
+    #ga {
+        justify-content: space-around;
+        margin-left: 50px;
+    }
+    #test1{
+        justify-content: space-between;
+    }
+</style>
+
+<form #form="ngForm" (ngSubmit)="submitForm(form)">
+    <div class="col">
+        <div style="background-color:rgb(48, 48, 235)">寄件人資訊</div>
+        <div class="row" id="test">
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" name="shipperName" class="form-control" ngModel>
+            </div>
+            <!-- <button style="height: 34px" id="go">go</button> -->
+            <div class="form-group">
+                <label>電話</label>
+                <input type="text" name="shipperPhone" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>分機</label>
+                <input type="text" name="shipperExtension" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>公司名稱</label>
+                <input type="text" name="shipperCompanyName" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>地址</label>
+                <input type="text" name="shipperAddress" class="form-control" ngModel>
+            </div>
+        </div>
+    </div>
+
+    <hr size="8px" align="center" width="100%">
+
+    <div class="col">
+        <div style="background-color:rgb(48, 48, 235)">收件人資訊</div>
+        <div class="row" id="test">
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" name="consigneeName" class="form-control" ngModel>
+            </div>
+            <!-- <button style="height: 34px" id="go">go</button> -->
+            <div class="form-group">
+                <label>電話</label>
+                <input type="text" name="consigneePhone" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>分機</label>
+                <input type="text" name="consigneeExtension" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>公司名稱</label>
+                <input type="text" name="consigneeCompanyName" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>地址</label>
+                <input type="text" name="consigneeAddress" class="form-control" ngModel>
+            </div>
+        </div>
+    </div>
+    <!-- <form #form="ngForm2" (ngSubmit)="submitForm2(form)"> -->
+    <div class="col">
+        <div style="background-color:gray">其他資訊</div>
+        <div class="row" id="test">
+            <div class="form-group">
+                <label>出貨單號</label>
+                <input type="text" name="TrackingNumber" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>配送日期</label>
+                <input type="date" name="DeliveryDate" class="form-control" ngModel style="width: 203.6px">
+            </div>
+            <div class="form-group">
+                <label>件數</label>
+                <input type="text" name="Quantity" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>才數</label>
+                <input type="text" name="SquareFeet" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>重量</label>
+                <input type="text" name="Kilogram" class="form-control" ngModel>
+            </div>
+        </div>
+        <div class="row" id="test">
+            <div class="form-group">
+                <label>產品名稱</label>
+                <input type="text" name="ProductName" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>本運費</label>
+                <input type="text" name="ShippingCharge" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>聯運費</label>
+                <input type="text" name="TransitCharge" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>接費</label>
+                <input type="text" name="PickUpCharge" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>特服費</label>
+                <input type="text" name="SpecialServiceCharge" class="form-control" ngModel>
+            </div>
+        </div>
+        <div class="row" id="test">
+            <div class="form-group">
+                <label>配送方法</label>
+                <input type="text" name="DeliveryWay" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>公司名稱</label>
+                <input type="text" name="CompanyName" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>起站</label>
+                <input type="text" name="ShippingStation" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>驛站</label>
+                <input type="text" name="EndStation" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <label>總重量</label>
+                <input type="text" name="TotalFreight" class="form-control" ngModel>
+            </div>
+        </div>
+        <div class="row" id="test">
+            <div class="form-group">
+                <label>狀態</label>
+                <input type="text" name="Version" class="form-control" ngModel>
+            </div>
+            <div class="form-group">
+                <!-- <label>追蹤單號</label>
+                <input type="text" name="TrackingNumber" class="form-control" ngModel> -->
+            </div>
+            <div class="form-group">
+                <!-- <label>ID</label>
+                <input type="text" name="ShipOrderId" class="form-control" ngModel> -->
+            </div>
+            <div class="form-group">
+                <!-- <label>驛站</label>
+                <input type="text" name="EndStation" class="form-control" ngModel> -->
+            </div>
+            <div class="form-group">
+                <!-- <label>總重量</label>
+                <input type="text" name="TotalFreight" class="form-control" ngModel> -->
+            </div>
+        </div>
+    </div>
+    <!-- </form> -->
+    <div class="form-group" id="ga">
+        <button type="submit" class="btn btn-default">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- <button type="submit" class="btn btn-default">一單多建</button>&nbsp;&nbsp; -->
+    </div>
+</form>
